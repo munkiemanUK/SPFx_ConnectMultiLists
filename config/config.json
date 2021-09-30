@@ -1,0 +1,30 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/spfx-build/config.2.0.schema.json",
+  "version": "2.0",
+  "bundles": {
+    "connect-multilists-web-part": {
+      "components": [
+        {
+          "entrypoint": "./lib/webparts/connectMultilists/ConnectMultilistsWebPart.js",
+          "manifest": "./src/webparts/connectMultilists/ConnectMultilistsWebPart.manifest.json"
+        }
+      ]
+    }
+  },
+  "externals": {
+    "jquery": {
+      "path": "https://code.jquery.com/jquery-3.5.1.min.js",
+      "globalName": "jquery"
+    },
+    "bootstrap": {
+      "path": "https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/js/bootstrap.bundle.min.js",
+      "globalName": "bootstrap",
+      "globalDependencies": [
+        "jquery"
+      ]
+    }
+  },
+  "localizedResources": {
+    "ConnectMultilistsWebPartStrings": "lib/webparts/connectMultilists/loc/{locale}.js"
+  }
+}

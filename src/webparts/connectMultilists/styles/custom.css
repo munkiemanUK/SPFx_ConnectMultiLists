@@ -1,0 +1,34 @@
+
+.panel-heading{background-color:"[theme: themeDark, default: #545487]"!important;text-decoration: none!important;height:50px;}
+.panel-heading h3{color:white!important; text-decoration: none!important;font-size:1.4em;}
+.panel-heading:hover {background-color:"[theme: themeLight, default: #7676b8]"!important; text-decoration: none!important;}
+.panel :hover .panel-title {color:white!important; text-decoration: none!important;}
+.panel :hover .panel-body{background-color:white!important;color:"[theme: themeDark, default: #545487]"!important;text-decoration: none!important;}
+.panel-body .linkrow:hover{background-color:"[theme: themePrimary, default: #545487]"!important; text-decoration: none!important;}
+.panel-body .linkrow h5{margin-left:10px;}
+.panel-body .linkrow:hover h5{color:white;}
+
+.accordionToggle:after {
+    position: relative;
+    top:-20px;
+    left:-10px;
+    font-family: 'Glyphicons Halflings';
+    font-size: 1.3em;
+    content: "\e114";
+    float: right;
+    color: white !important;
+}
+
+.accordionToggle.collapsed:after {
+    position: relative;
+    top:-20px;
+    left:-10px;    
+    font-family: 'Glyphicons Halflings';
+    font-size: 1.3em;
+    content: "\e080";
+    color: white !important;
+}
+
+#medical:hover {background-color:"[theme: themeDark, default: #545487]"!important;color:"[theme: themeLight, default: #ddddeb]"!important;}
+.hidden{display:none;}
+
