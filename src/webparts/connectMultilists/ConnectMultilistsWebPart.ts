@@ -33,7 +33,7 @@ export interface IConnectMultilistsWebPartProps {
   description: string;
 }
 
-export interface ISPLists {
+export interface AuditLists {
   value: AuditQuestionsList[];
 }
 
@@ -48,7 +48,7 @@ export interface AuditQuestionsList {
 
 export default class ConnectMultilistsWebPart extends BaseClientSideWebPart<IConnectMultilistsWebPartProps> {
 
-  private async _getConsultationData(): Promise<ISPLists> {
+  private async _getConsultationData(): Promise<AuditLists> {
     const response = await this.context.spHttpClient.get(this.context.pageContext.web.absoluteUrl + `/_api/web/lists/GetByTitle('Audit%20Tool%20Questions')/Items?$filter=Section eq 'Consultation Records'`, SPHttpClient.configurations.v1);
     return await response.json();
   }
@@ -59,6 +59,7 @@ export default class ConnectMultilistsWebPart extends BaseClientSideWebPart<ICon
       alert($(this).text());
       assessmentType=$(this).text();
     });
+    
     items.forEach((item: AuditQuestionsList) => {       
       let assessment: string=item.Assessment;
       console.log(assessment+" "+assessmentType);
@@ -103,12 +104,16 @@ export default class ConnectMultilistsWebPart extends BaseClientSideWebPart<ICon
     }
   }  
 
+  public onChangeSelect(event: any): void {
+    this.setState({ ItemCountry: event.target.value });
+  }
+
   public render(): void {
     let bootstrapCssURL = "https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/css/bootstrap.min.css";
     let fontawesomeCssURL = "https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.11.2/css/regular.min.css";
     SPComponentLoader.loadCss(bootstrapCssURL);
     SPComponentLoader.loadCss(fontawesomeCssURL);
-
+    
     this.domElement.innerHTML = `
       <div class="${ styles.connectMultilists }">
         <div class="${ styles.container }">
@@ -117,6 +122,10 @@ export default class ConnectMultilistsWebPart extends BaseClientSideWebPart<ICon
               <span class="${ styles.title }">Welcome to SharePoint!</span>
               <p class="${ styles.subTitle }">Customize SharePoint experiences using web parts.</p>
               <p class="${ styles.description }">${escape(this.properties.description)}</p>
+              <select value={this.state.ItemCountry} className={styles.myinput} onChange=
+              {this.onChangeSelect.bind(this)}>{options}
+              </select>
+
               <div class="dropdown mr-1">
                 <button type="button" class="btn dropdown-toggle dropdown-toggle-split text-white" style="background-color: #545487;" id="dropdownAssessment" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" data-reference="parent">
                     Assessment
