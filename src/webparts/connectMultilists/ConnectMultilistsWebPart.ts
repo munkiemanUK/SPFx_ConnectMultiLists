@@ -22,7 +22,7 @@ import {
 
 // import node module external libraries
 import * as $ from 'jquery';
-//import * as React from 'react';
+import * as React from 'react';
 require('bootstrap');
 require('./styles/custom.css');
 
@@ -104,9 +104,9 @@ export default class ConnectMultilistsWebPart extends BaseClientSideWebPart<ICon
     }
   }  
 
-  public onChangeSelect(event: any): void {
-    this.setState({ ItemCountry: event.target.value });
-  }
+  //public onChangeSelect(event: any): void {
+  //  this.setState({ ItemCountry: event.target.value });
+  //}
 
   public render(): void {
     let bootstrapCssURL = "https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/css/bootstrap.min.css";
@@ -122,10 +122,7 @@ export default class ConnectMultilistsWebPart extends BaseClientSideWebPart<ICon
               <span class="${ styles.title }">Welcome to SharePoint!</span>
               <p class="${ styles.subTitle }">Customize SharePoint experiences using web parts.</p>
               <p class="${ styles.description }">${escape(this.properties.description)}</p>
-              <select value={this.state.ItemCountry} className={styles.myinput} onChange=
-              {this.onChangeSelect.bind(this)}>{options}
-              </select>
-
+              
               <div class="dropdown mr-1">
                 <button type="button" class="btn dropdown-toggle dropdown-toggle-split text-white" style="background-color: #545487;" id="dropdownAssessment" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" data-reference="parent">
                     Assessment
