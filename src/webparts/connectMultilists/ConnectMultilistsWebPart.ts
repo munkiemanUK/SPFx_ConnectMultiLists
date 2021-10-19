@@ -1,24 +1,23 @@
 import { Version } from '@microsoft/sp-core-library';
 import { SPComponentLoader } from '@microsoft/sp-loader';
-import {
-  IPropertyPaneConfiguration,
-  PropertyPaneTextField
-} from '@microsoft/sp-property-pane';
+import {IPropertyPaneConfiguration,PropertyPaneTextField} from '@microsoft/sp-property-pane';
 import { BaseClientSideWebPart } from '@microsoft/sp-webpart-base';
 import { escape } from '@microsoft/sp-lodash-subset';
 
 import styles from './ConnectMultilistsWebPart.module.scss';
 import * as strings from 'ConnectMultilistsWebPartStrings';
 
-import {
-  SPHttpClient,
-  SPHttpClientResponse
-} from '@microsoft/sp-http';
-
-import {
-  Environment,
-  EnvironmentType
-} from '@microsoft/sp-core-library';
+import {SPHttpClient,SPHttpClientResponse} from '@microsoft/sp-http';
+import {Environment,EnvironmentType} from '@microsoft/sp-core-library';
+import { ComboBox, IComboBoxOption, IComboBox, PrimaryButton } from 'office-ui-fabric-react/lib/index';
+import { PeoplePicker, PrincipalType } from "@pnp/spfx-controls-react/lib/PeoplePicker";
+import { DateTimePicker, DateConvention, TimeConvention, TimeDisplayControlType } from '@pnp/spfx-controls-react/lib/dateTimePicker';
+import { Web } from "@pnp/sp/presets/all";
+import { getGUID } from "@pnp/common";
+import { sp } from "@pnp/sp";
+import "@pnp/sp/webs";
+import "@pnp/sp/lists";
+import "@pnp/sp/items";
 
 // import node module external libraries
 import * as $ from 'jquery';
@@ -139,6 +138,8 @@ export default class ConnectMultilistsWebPart extends BaseClientSideWebPart<ICon
                     <a class="dropdown-item" href="#">Safety Critical</a>
                     <a class="dropdown-item" href="#">Skin</a>
                 </div>
+                <div className="col-3"> 
+              </div>                
               </div>
               <p class="${ styles.description }">Loading from ${escape(this.context.pageContext.web.title)}</p>
               <a href="https://aka.ms/spfx" class="${ styles.button }">
